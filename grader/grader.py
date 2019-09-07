@@ -56,7 +56,7 @@ else:
 		points = [10, 12, 12, 16, 50]
 	elif PROBLEM_CODE == "xoranges":
 		subtasks = [["../testcases/xoranges/%s.s%dt%d" % ("%s", i, j) for j in range((2 if i == 3 else 1),6)] for i in range(1, 6)]
-		points = [10, 12, 12, 16, 50]
+		points = [12, 18, 25, 20, 25]
 
 	for i, (p, files) in enumerate(zip(points,subtasks)):
 		if eval_subtask(files):
