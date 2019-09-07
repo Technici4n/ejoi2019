@@ -9,7 +9,7 @@ def ex(cmd):
 		cmd = cmd.replace("/", "\\")
 	os.system(cmd)
 
-SOLUTION_FILE = "main.cpp"
+SOLUTION_FILE = "main.cpp" if len(sys.argv) < 3 else sys.argv[2]
 PROBLEM_CODE = sys.argv[1]
 
 TEMP_FILE = "tmp.txt"
