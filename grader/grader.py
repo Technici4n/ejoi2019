@@ -1,6 +1,8 @@
 import os
+import platform
+import sys
 
-WINDOWS = True
+WINDOWS = platform.system() == "Windows"
 
 def ex(cmd):
 	if WINDOWS:
@@ -8,7 +10,7 @@ def ex(cmd):
 	os.system(cmd)
 
 SOLUTION_FILE = "main.cpp"
-PROBLEM_CODE = "adventure"
+PROBLEM_CODE = sys.argv[2]
 
 TEMP_FILE = "tmp.txt"
 OUT_FILE = "main.exe" if WINDOWS else "./main.exe"
@@ -27,7 +29,7 @@ def eval_testcase(infile, outfile):
 		solution_output = f.read()
 	with open(TEMP_FILE) as f:
 		your_output = f.read()
-	ok = solution_output == your_output
+	ok = solution_output.strip() == your_output.strip()
 	print(" AC" if ok else " WA")
 	return ok
 
