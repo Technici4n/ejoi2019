@@ -8,7 +8,7 @@ def ex(cmd):
 	os.system(cmd)
 
 SOLUTION_FILE = "main.cpp"
-PROBLEM_CODE = "tower"
+PROBLEM_CODE = "adventure"
 
 TEMP_FILE = "tmp.txt"
 OUT_FILE = "main.exe" if WINDOWS else "./main.exe"
@@ -47,10 +47,10 @@ if PROBLEM_CODE == "tower":
 else:
 	# test problem
 	if PROBLEM_CODE == "rack":
-		subtasks = [["../testcases/rack/%s.test_0%d_0%d" % ("%s", i, j) for j in range(1,6)] for i in range(1, 4)]
+		subtasks = [["../testcases/rack/%s.test_%02d_%02d" % ("%s", i, j) for j in range(1,6)] for i in range(1, 4)]
 		points = [20, 20, 60]
 	elif PROBLEM_CODE == "adventure":
-		subtasks = [["../testcases/adventure/%s.test_0%d_0%d" % ("%s", i, j) for j in range(1,11)] for i in range(0, 5)]
+		subtasks = [["../testcases/adventure/%s.test_%02d_%02d" % ("%s", i, j) for j in range(1,11)] for i in range(0, 5)]
 		points = [10, 12, 12, 16, 50]
 
 	for i, (p, files) in enumerate(zip(points,subtasks)):
