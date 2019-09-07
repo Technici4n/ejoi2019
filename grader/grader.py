@@ -11,7 +11,7 @@ def ex(cmd):
 
 SOLUTION_FILE = "main.cpp" if len(sys.argv) < 3 else sys.argv[2]
 PROBLEM_CODE = sys.argv[1]
-
+PYTHON = "python" if WINDOWS else "python3"
 TEMP_FILE = "tmp.txt"
 OUT_FILE = "main.exe" if WINDOWS else "./main.exe"
 
@@ -44,7 +44,7 @@ if PROBLEM_CODE == "tower":
 	outputs = ["../testcases/tower/output.%02d" % i for i in range(1, 11)]
 	for i in range(0, 10):
 		ex("%s < %s > %s" % (OUT_FILE, inputs[i], TEMP_FILE))
-		ex("\"../testcases/checker.py\" %s %s %s" % (inputs[i], outputs[i], TEMP_FILE))
+		ex("%s \"../testcases/checker.py\" %s %s %s" % (PYTHON, inputs[i], outputs[i], TEMP_FILE))
 # normal problems
 else:
 	# test problem
@@ -57,6 +57,9 @@ else:
 	elif PROBLEM_CODE == "xoranges":
 		subtasks = [["../testcases/xoranges/%s.s%dt%d" % ("%s", i, j) for j in range((2 if i == 3 else 1),6)] for i in range(1, 6)]
 		points = [12, 18, 25, 20, 25]
+	elif PROBLEM_CODE == "covering":
+		subtasks = [["../testcases/covering/%s.test_%02d_%02d" % ("%s", i, j) for j in range(1,6)] for i in range(1, 8)]
+		points = [5, 10, 10, 10, 15, 20, 30]
 
 	for i, (p, files) in enumerate(zip(points,subtasks)):
 		if eval_subtask(files):
